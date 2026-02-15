@@ -30,3 +30,8 @@ build/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Python env
+.venv/
+.venv_mp/
+env/
