@@ -1,0 +1,32 @@
+# =====================
+# Python / Backend
+# =====================
+__pycache__/
+*.pyc
+.venv/
+env/
+*.db
+*.log
+*.pt
+
+# =====================
+# Node.js / Frontend
+# =====================
+node_modules/
+build/
+
+# =====================
+# Images
+# =====================
+*.jpg
+*.jpeg
+*.png
+*.gif
+
+# =====================
+# IDE / OS files
+# =====================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
