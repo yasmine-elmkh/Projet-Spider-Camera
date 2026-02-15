@@ -1,0 +1,24 @@
+# Framework web rapide pour Python
+fastapi==0.104.1
+# Serveur ASGI pour FastAPI
+uvicorn[standard]==0.24.0
+# Bibliothèque de vision par ordinateur
+opencv-python==4.8.1
+# Framework de deep learning léger
+opencv-contrib-python==4.8.1
+# Calculs scientifiques et manipulation de tableaux
+numpy==1.24.3
+# Framework de détection d'objets
+ultralytics==8.0.196
+# Détection de visages et landmarks
+mediapipe==0.10.8
+# Support CORS pour les requêtes cross-origin
+python-multipart==0.0.6
+# WebSocket support
+websockets==12.0
+# Gestion des fichiers uploadés
+python-multipart==0.0.6
+# Variables d'environnement
+python-dotenv==1.0.0
+# Manipulation d'images
+Pillow==10.1.0
