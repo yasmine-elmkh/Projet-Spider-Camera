@@ -470,50 +470,172 @@ const SettingsPanel = () => {
         </div>
       )}
 
-      {/* Section Avancé */}
-      {activeSection === 'advanced' && (
-        <div className="card">
-          <h3 className="card-header">Paramètres Avancés</h3>
-          
-          <div className="space-y-4">
-            <div className="p-4 bg-yellow-900 bg-opacity-20 border border-yellow-700 rounded-lg">
-              <div className="flex items-start space-x-3">
-                <AlertCircle className="w-6 h-6 text-yellow-500 flex-shrink-0 mt-1" />
+    
+        {/* Section Avancé */}
+        {activeSection === 'advanced' && (
+          <div className="space-y-6">
+            <div className="card">
+              <h3 className="text-lg font-bold text-white mb-4">Paramètres Système</h3>
+              
+              <div className="space-y-4">
+                {/* Mode Performance */}
                 <div>
-                  <h4 className="font-semibold text-yellow-500 mb-1">Section en développement</h4>
-                  <p className="text-gray-300 text-sm">
-                    Les paramètres avancés seront disponibles dans une prochaine version. 
-                    Cela inclura la calibration du studio, les réglages de performance, 
-                    et les options de logging.
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Mode Performance
+                  </label>
+                  <select className="input">
+                    <option>Qualité Maximale (Recommandé)</option>
+                    <option>Équilibré</option>
+                    <option>Performance Maximale</option>
+                  </select>
+                  <p className="text-xs text-gray-400 mt-2">
+                    Ajuste la qualité vidéo et la fréquence de détection
                   </p>
+                </div>
+
+                {/* FPS Cible */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    FPS Cible
+                  </label>
+                  <div className="flex items-center space-x-4">
+                    <input
+                      type="range"
+                      min="15"
+                      max="60"
+                      step="5"
+                      defaultValue={30}
+                      className="flex-1"
+                    />
+                    <span className="text-lg font-bold w-16 text-center text-white">30</span>
+                  </div>
+                  <p className="text-xs text-gray-400 mt-2">
+                    Fréquence d'images par seconde (15-60 FPS)
+                  </p>
+                </div>
+
+                {/* Qualité JPEG */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Qualité Compression JPEG
+                  </label>
+                  <div className="flex items-center space-x-4">
+                    <input
+                      type="range"
+                      min="50"
+                      max="100"
+                      step="5"
+                      defaultValue={85}
+                      className="flex-1"
+                    />
+                    <span className="text-lg font-bold w-16 text-center text-white">85%</span>
+                  </div>
+                  <p className="text-xs text-gray-400 mt-2">
+                    Plus élevé = meilleure qualité mais plus de bande passante
+                  </p>
+                </div>
+
+                {/* Logging */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Niveau de Logging
+                  </label>
+                  <select className="input">
+                    <option>Info (Recommandé)</option>
+                    <option>Debug (Détaillé)</option>
+                    <option>Warning (Minimal)</option>
+                    <option>Error (Erreurs uniquement)</option>
+                  </select>
+                  <p className="text-xs text-gray-400 mt-2">
+                    Contrôle la verbosité des logs système
+                  </p>
+                </div>
+
+                {/* Auto-restart */}
+                <div className="flex items-center justify-between p-4 bg-gray-700 rounded-lg">
+                  <div>
+                    <p className="font-medium text-white">Redémarrage Automatique</p>
+                    <p className="text-sm text-gray-400">
+                      Redémarre la détection en cas d'erreur
+                    </p>
+                  </div>
+                  <button className="relative inline-flex h-8 w-14 items-center rounded-full bg-blue-600">
+                    <span className="inline-block h-6 w-6 transform rounded-full bg-white transition-transform translate-x-7" />
+                  </button>
+                </div>
+
+                {/* Statistiques détaillées */}
+                <div className="flex items-center justify-between p-4 bg-gray-700 rounded-lg">
+                  <div>
+                    <p className="font-medium text-white">Statistiques Détaillées</p>
+                    <p className="text-sm text-gray-400">
+                      Enregistre des métriques de performance avancées
+                    </p>
+                  </div>
+                  <button className="relative inline-flex h-8 w-14 items-center rounded-full bg-gray-600">
+                    <span className="inline-block h-6 w-6 transform rounded-full bg-white transition-transform translate-x-1" />
+                  </button>
                 </div>
               </div>
             </div>
 
-            <div className="space-y-2 opacity-50 pointer-events-none">
-              <div className="p-4 bg-gray-700 rounded-lg">
-                <p className="text-sm text-gray-300">Mode Performance</p>
-                <select className="input mt-2" disabled>
-                  <option>Qualité Maximale</option>
-                  <option>Équilibré</option>
-                  <option>Performance Maximale</option>
-                </select>
-              </div>
+            {/* Calibration Studio */}
+            <div className="card">
+              <h3 className="text-lg font-bold text-white mb-4">Calibration Studio</h3>
+              
+              <div className="space-y-4">
+                <div className="grid grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Largeur (m)
+                    </label>
+                    <input type="number" step="0.1" defaultValue={10} className="input" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Profondeur (m)
+                    </label>
+                    <input type="number" step="0.1" defaultValue={10} className="input" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Hauteur (m)
+                    </label>
+                    <input type="number" step="0.1" defaultValue={4} className="input" />
+                  </div>
+                </div>
 
-              <div className="p-4 bg-gray-700 rounded-lg">
-                <p className="text-sm text-gray-300">Niveau de Logging</p>
-                <select className="input mt-2" disabled>
-                  <option>Info</option>
-                  <option>Debug</option>
-                  <option>Warning</option>
-                  <option>Error</option>
-                </select>
+                <button className="btn-primary w-full">
+                  <Save className="w-4 h-4 mr-2" />
+                  Enregistrer Calibration
+                </button>
+              </div>
+            </div>
+
+            {/* Actions système */}
+            <div className="card border-2 border-yellow-700">
+              <h3 className="text-lg font-bold text-yellow-500 mb-4">Zone Dangereuse</h3>
+              
+              <div className="space-y-3">
+                <button className="btn-secondary w-full">
+                  <RotateCcw className="w-4 h-4 mr-2" />
+                  Réinitialiser Configuration
+                </button>
+                
+                <button className="btn-secondary w-full">
+                  <Trash2 className="w-4 h-4 mr-2" />
+                  Effacer Historique
+                </button>
+                
+                <button className="w-full px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium flex items-center justify-center">
+                  <AlertCircle className="w-4 h-4 mr-2" />
+                  Réinitialisation Complète
+                </button>
               </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
   )
 }
 
